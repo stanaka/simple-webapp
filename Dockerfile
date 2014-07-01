@@ -1,6 +1,6 @@
 FROM ubuntu:12.04
 RUN apt-get update && apt-get -y install ruby1.9.3 curl unzip
-RUN curl -O http://file.mackerel.io/agent/deb/mackerel-agent_latest.all.deb && dpkg -i mackerel-agent_latest.all.deb
+#RUN curl -O http://file.mackerel.io/agent/deb/mackerel-agent_latest.all.deb && dpkg -i mackerel-agent_latest.all.deb
 RUN curl -L -o /tmp/serf.zip https://dl.bintray.com/mitchellh/serf/0.5.0_linux_amd64.zip && unzip -d /usr/bin /tmp/serf.zip
 RUN gem install bundler
 ADD . /src
