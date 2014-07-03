@@ -7,7 +7,8 @@ ADD . /src
 RUN cd /src && bundle install
 EXPOSE 4567
 WORKDIR /src
-CMD echo OTHER_OPTS="-role=sample:${ROLE:-app}" >> /etc/default/mackerel-agent && /etc/init.d/mackerel-agent start && sleep 3 && ./mackerel-update-status.sh standby && rackup -p4567
+CMD echo APIKEY=\"$APIKEY\" > /etc/default/mackerel-agent && echo OTHER_OPTS="-role=sample:${ROLE:-app}" >> /etc/default/mackerel-agent && /etc/init.d/mackerel-agent start && sleep 3 && ./mackerel-update-status.sh standby && rackup -p4567
+# CMD echo OTHER_OPTS="-role=sample:${ROLE:-app}" >> /etc/default/mackerel-agent && /etc/init.d/mackerel-agent start && sleep 3 && ./mackerel-update-status.sh standby && rackup -p4567
 # CMD /etc/init.d/mackerel-agent start && (/usr/bin/serf agent -event-handler=/src/serf-handler.sh -log-level=debug &) ; rackup -p4567
 # CMD /etc/init.d/mackerel-agent start
 # CMD ["rackup", "-p4567"]
